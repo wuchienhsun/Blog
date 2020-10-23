@@ -9,6 +9,7 @@ into the {body} of the default.hbs template --}}
 
 {{!-- Everything inside the #post tags pulls data from the post --}}
 {{#post}}
+<progress class="reading-progress-bar"></progress>
 
 <main id="site-main" class="site-main outer">
     <div class="inner">
@@ -178,6 +179,36 @@ into the {body} of the default.hbs template --}}
 {{!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs --}}
 {{#contentFor "scripts"}}
 <script>
+    const readingProgress = (contentArea, progressBar) => {
+    const content = document.querySelector(contentArea);
+    const progress = document.querySelector(progressBar);
+
+    const frameListening = () => {
+        const contentBox = content.getBoundingClientRect();
+        const midPoint = window.innerHeight / 2;
+        const minsRemaining = Math.round(progress.max - progress.value);
+
+        if (contentBox.top > midPoint) {
+            progress.value = 0;
+        }
+
+        if (contentBox.top < midPoint) {
+            progress.value = progress.max;
+        }
+
+        if (contentBox.top <= midPoint && contentBox.bottom >= midPoint) {
+            progress.value =
+                (progress.max * Math.abs(contentBox.top - midPoint)) /
+                contentBox.height;
+        }
+
+        window.requestAnimationFrame(frameListening);
+    };
+
+    window.requestAnimationFrame(frameListening);
+};
+
+readingProgress(".post-full-content", ".reading-progress-bar");
     $(document).ready(function () {
         // FitVids - start
         var $postContent = $(".post-full-content");
