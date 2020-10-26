@@ -8,7 +8,7 @@
     --purple: #ad26b4;
     --yellow: #fecd35;
     --red: #f05230;
-    --darkgrey: #15171A;
+    --darkgrey: #15171a;
     --midgrey: #738a94;
     --lightgrey: #c5d2d9;
     --whitegrey: #e5eff5;
@@ -282,7 +282,8 @@ html {
 body {
     overflow-x: hidden;
     color: color-mod(var(--midgrey) l(-30%));
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+        "Helvetica Neue", sans-serif;
     font-size: 1.6rem;
     line-height: 1.6em;
     font-weight: 400;
@@ -485,18 +486,3 @@ h6 {
     font-size: 1.4rem;
     font-weight: 500;
 }
-
-progress.reading-progress-bar {
-    appearance: none;
-    position: fixed;
-    width: 100%;
-    height: 2px;
-  }
-  
-  progress.reading-progress-bar[value]::-webkit-progress-bar {
-    background-color: rgba(0,0,0,0.5);
-  }
-  
-  progress.reading-progress-bar[value]::-webkit-progress-value {
-    background-color: #3eb0ef;
-  }
