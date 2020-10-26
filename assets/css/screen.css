@@ -605,7 +605,9 @@ progress.reading-progress-bar {
     appearance: none;
     position: fixed;
     width: 100%;
-    height: 2px;
+    height: 4px;
+    z-index: 10000;
+    top: 64px;
 }
 
 progress.reading-progress-bar[value]::-webkit-progress-bar {
